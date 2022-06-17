@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:rencanggunung_web_flutter/views/home_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(
+    theme: ThemeData(fontFamily: GoogleFonts.montserrat().fontFamily),
+    debugShowCheckedModeBanner: false,
+    home: MenuView(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
