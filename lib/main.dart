@@ -10,7 +10,7 @@ void main() {
     title: 'Rencang Gunung Outdoor',
     theme: ThemeData(fontFamily: GoogleFonts.montserrat().fontFamily),
     debugShowCheckedModeBanner: false,
-    home: MenuView(),
+    home: const MenuView(),
   ));
 }
 
