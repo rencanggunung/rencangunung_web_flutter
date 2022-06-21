@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class MenuView extends StatefulWidget {
@@ -30,11 +31,24 @@ class _MenuViewState extends State<MenuView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 50, right: 50, bottom: 10),
-              child: LinearProgressIndicator(
-                color: Colors.indigo.shade700,
-                backgroundColor: Colors.transparent,
+            // const Padding(
+            //   padding: EdgeInsets.only(left: 50, right: 50, bottom: 10),
+            //   child: CircularProgressIndicator(
+            //     color: Colors.blueGrey,
+            //     backgroundColor: Colors.transparent,
+            //   ),
+            // ),
+            SizedBox(
+              height: 50,
+              width: 50,
+              child: LoadingIndicator(
+                indicatorType: Indicator.ballPulseSync,
+                colors: [
+                  Colors.black,
+                  Colors.green.shade700,
+                  const Color.fromARGB(255, 213, 213, 213),
+                ],
+                strokeWidth: 2,
               ),
             ),
             const Text(

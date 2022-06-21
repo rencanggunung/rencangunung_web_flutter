@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rencanggunung_web_flutter/views/home_view.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -8,7 +7,9 @@ void main() {
   setPathUrlStrategy();
   runApp(MaterialApp(
     title: 'Rencang Gunung Outdoor',
-    theme: ThemeData(fontFamily: GoogleFonts.montserrat().fontFamily),
+    theme: ThemeData(
+      fontFamily: 'Montserrat',
+    ),
     debugShowCheckedModeBanner: false,
     home: const MenuView(),
   ));
