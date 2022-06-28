@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:lottie/lottie.dart';
@@ -42,91 +43,94 @@ class _MenuViewState extends State<MenuView> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/images/rg_logo.png',
-              height: MediaQuery.of(context).size.height / 8,
-            ),
-            Lottie.asset('assets/lottie/mountaineering.json',
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.height / 3,
-                frameRate: FrameRate.max),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'C o m i n g   S o o n ',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
-                  textAlign: TextAlign.start,
-                ),
-                SizedBox(
-                  height: 40,
-                  width: 40,
-                  child: LoadingIndicator(
-                    indicatorType: Indicator.ballPulseSync,
-                    colors: [
-                      Colors.black,
-                      Colors.green.shade700,
-                      const Color.fromARGB(255, 213, 213, 213),
-                    ],
-                    strokeWidth: 2,
+      body: WillPopScope(
+        onWillPop: _onWillPop,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/rg_logo.png',
+                height: MediaQuery.of(context).size.height / 8,
+              ),
+              Lottie.asset('assets/lottie/mountaineering.json',
+                  height: MediaQuery.of(context).size.height / 3,
+                  width: MediaQuery.of(context).size.height / 3,
+                  frameRate: FrameRate.max),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'C o m i n g   S o o n ',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.start,
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.grey.withOpacity(0.3)),
-                  child: Center(
-                    child: InkWell(
-                      onTap: () {
-                        launchUrlString(ig,
-                            mode: LaunchMode.externalApplication);
-                      },
-                      child: const Icon(
-                        Bootstrap.instagram,
-                        size: 20,
+                  SizedBox(
+                    height: 40,
+                    width: 40,
+                    child: LoadingIndicator(
+                      indicatorType: Indicator.ballPulseSync,
+                      colors: [
+                        Colors.black,
+                        Colors.green.shade700,
+                        const Color.fromARGB(255, 213, 213, 213),
+                      ],
+                      strokeWidth: 2,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.grey.withOpacity(0.3)),
+                    child: Center(
+                      child: InkWell(
+                        onTap: () {
+                          launchUrlString(ig,
+                              mode: LaunchMode.externalApplication);
+                        },
+                        child: const Icon(
+                          Bootstrap.instagram,
+                          size: 20,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.grey.withOpacity(0.3)),
-                  child: Center(
-                    child: InkWell(
-                      onTap: () {
-                        launchUrlString(gmaps,
-                            mode: LaunchMode.externalApplication);
-                      },
-                      child: const Icon(
-                        Bootstrap.geo_alt,
-                        size: 20,
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.grey.withOpacity(0.3)),
+                    child: Center(
+                      child: InkWell(
+                        onTap: () {
+                          launchUrlString(gmaps,
+                              mode: LaunchMode.externalApplication);
+                        },
+                        child: const Icon(
+                          Bootstrap.geo_alt,
+                          size: 20,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
         ),
       ),
 
@@ -163,5 +167,10 @@ class _MenuViewState extends State<MenuView> with TickerProviderStateMixin {
       // ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.miniEndTop,
     );
+  }
+
+  Future<bool> _onWillPop() async {
+    await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+    return false;
   }
 }
