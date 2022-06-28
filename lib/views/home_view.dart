@@ -11,7 +11,9 @@ class MenuView extends StatefulWidget {
   State<MenuView> createState() => _MenuViewState();
 }
 
-class _MenuViewState extends State<MenuView> {
+class _MenuViewState extends State<MenuView> with TickerProviderStateMixin {
+  AnimationController? _controller;
+
   // final audioplayer = AssetsAudioPlayer();
   bool playmusic = false;
 
@@ -26,6 +28,18 @@ class _MenuViewState extends State<MenuView> {
   // }
 
   @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller!.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -37,9 +51,9 @@ class _MenuViewState extends State<MenuView> {
               height: MediaQuery.of(context).size.height / 8,
             ),
             Lottie.asset('assets/lottie/mountaineering.json',
-                fit: BoxFit.fill,
                 height: MediaQuery.of(context).size.height / 3,
-                alignment: Alignment.center),
+                width: MediaQuery.of(context).size.height / 3,
+                frameRate: FrameRate.max),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
