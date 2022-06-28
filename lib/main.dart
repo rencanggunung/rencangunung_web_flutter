@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rencanggunung_web_flutter/views/home_view.dart';
+import 'package:rencanggunung_web_flutter/views/splash_view.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() {
@@ -11,7 +11,7 @@ void main() {
       fontFamily: 'Montserrat',
     ),
     debugShowCheckedModeBanner: false,
-    home: const MenuView(),
+    home: const SplashView(),
   ));
 }
 

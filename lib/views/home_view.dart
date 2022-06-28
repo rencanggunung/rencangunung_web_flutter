@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class MenuView extends StatefulWidget {
@@ -31,29 +32,36 @@ class _MenuViewState extends State<MenuView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // const Padding(
-            //   padding: EdgeInsets.only(left: 50, right: 50, bottom: 10),
-            //   child: CircularProgressIndicator(
-            //     color: Colors.blueGrey,
-            //     backgroundColor: Colors.transparent,
-            //   ),
-            // ),
-            SizedBox(
-              height: 50,
-              width: 50,
-              child: LoadingIndicator(
-                indicatorType: Indicator.ballPulseSync,
-                colors: [
-                  Colors.black,
-                  Colors.green.shade700,
-                  const Color.fromARGB(255, 213, 213, 213),
-                ],
-                strokeWidth: 2,
-              ),
+            Image.asset(
+              'assets/images/rg_logo.png',
+              height: MediaQuery.of(context).size.height / 8,
             ),
-            const Text(
-              'C o m i n g   S o o n . . .',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            Lottie.asset('assets/lottie/mountaineering.json',
+                fit: BoxFit.fill,
+                height: MediaQuery.of(context).size.height / 3,
+                alignment: Alignment.center),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'C o m i n g   S o o n ',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+                  textAlign: TextAlign.start,
+                ),
+                SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: LoadingIndicator(
+                    indicatorType: Indicator.ballPulseSync,
+                    colors: [
+                      Colors.black,
+                      Colors.green.shade700,
+                      const Color.fromARGB(255, 213, 213, 213),
+                    ],
+                    strokeWidth: 2,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 20,
@@ -96,7 +104,7 @@ class _MenuViewState extends State<MenuView> {
                             mode: LaunchMode.externalApplication);
                       },
                       child: const Icon(
-                        Bootstrap.whatsapp,
+                        Bootstrap.geo_alt,
                         size: 20,
                       ),
                     ),
@@ -107,12 +115,22 @@ class _MenuViewState extends State<MenuView> {
           ],
         ),
       ),
+
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 10),
-        child: Text(
-          'Rencang Gunung Outdoor | 2022',
-          style: TextStyle(color: Colors.grey.withOpacity(0.8)),
-          textAlign: TextAlign.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.copyright,
+              size: 20,
+              color: Colors.grey.withOpacity(0.6),
+            ),
+            Text(
+              'Rencang Gunung Outdoor | 2022',
+              style: TextStyle(color: Colors.grey.withOpacity(0.8)),
+            ),
+          ],
         ),
       ),
       // floatingActionButton: InkWell(
