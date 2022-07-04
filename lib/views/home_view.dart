@@ -4,6 +4,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/link.dart';
 
 class MenuView extends StatefulWidget {
   const MenuView({Key? key}) : super(key: key);
@@ -93,16 +94,21 @@ class _MenuViewState extends State<MenuView> with TickerProviderStateMixin {
                         borderRadius: BorderRadius.circular(5),
                         color: Colors.grey.withOpacity(0.3)),
                     child: Center(
-                      child: InkWell(
-                        onTap: () {
-                          launchUrlString(ig,
-                              mode: LaunchMode.externalApplication);
-                        },
-                        child: const Icon(
-                          Bootstrap.instagram,
-                          size: 20,
-                        ),
-                      ),
+                      child: Link(
+                          target: LinkTarget.self,
+                          uri: Uri.parse(gmaps),
+                          builder: (context, function) {
+                            return InkWell(
+                              onTap: () {
+                                launchUrlString(ig,
+                                    mode: LaunchMode.inAppWebView);
+                              },
+                              child: const Icon(
+                                Bootstrap.instagram,
+                                size: 20,
+                              ),
+                            );
+                          }),
                     ),
                   ),
                   const SizedBox(
@@ -115,16 +121,17 @@ class _MenuViewState extends State<MenuView> with TickerProviderStateMixin {
                         borderRadius: BorderRadius.circular(5),
                         color: Colors.grey.withOpacity(0.3)),
                     child: Center(
-                      child: InkWell(
-                        onTap: () {
-                          launchUrlString(gmaps,
-                              mode: LaunchMode.externalApplication);
-                        },
-                        child: const Icon(
-                          Bootstrap.geo_alt,
-                          size: 20,
-                        ),
-                      ),
+                      child: Link(
+                          target: LinkTarget.self,
+                          uri: Uri.parse(gmaps),
+                          builder: (context, function) {
+                            return InkWell(
+                                onTap: () {},
+                                child: const Icon(
+                                  Bootstrap.geo_alt,
+                                  size: 20,
+                                ));
+                          }),
                     ),
                   ),
                 ],
