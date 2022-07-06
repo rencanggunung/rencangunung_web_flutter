@@ -126,7 +126,10 @@ class _MenuViewState extends State<MenuView> with TickerProviderStateMixin {
                           uri: Uri.parse(gmaps),
                           builder: (context, function) {
                             return InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  launchUrlString(gmaps,
+                                      mode: LaunchMode.inAppWebView);
+                                },
                                 child: const Icon(
                                   Bootstrap.geo_alt,
                                   size: 20,
