@@ -27,17 +27,15 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: SizedBox(
           height: 50,
           width: 50,
           child: LoadingIndicator(
-            indicatorType: Indicator.ballRotateChase,
+            indicatorType: Indicator.ballScale,
             colors: [
-              const Color.fromARGB(255, 255, 226, 10),
-              Colors.green.shade700,
-              const Color.fromARGB(255, 155, 155, 155),
+              Color.fromARGB(255, 6, 178, 124),
             ],
             strokeWidth: 2,
           ),

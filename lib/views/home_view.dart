@@ -96,7 +96,7 @@ class _MenuViewState extends State<MenuView> with TickerProviderStateMixin {
                     child: Center(
                       child: Link(
                           target: LinkTarget.self,
-                          uri: Uri.parse(gmaps),
+                          uri: Uri.parse(ig),
                           builder: (context, function) {
                             return InkWell(
                               onTap: () {
@@ -140,39 +140,24 @@ class _MenuViewState extends State<MenuView> with TickerProviderStateMixin {
           ),
         ),
       ),
-
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.copyright,
-              size: 20,
-              color: Colors.grey.withOpacity(0.6),
-            ),
-            Text(
-              'Rencang Gunung Outdoor | 2022',
-              style: TextStyle(color: Colors.grey.withOpacity(0.8)),
-            ),
-          ],
+        child: RichText(
+          text: TextSpan(children: [
+            WidgetSpan(
+                alignment: PlaceholderAlignment.top,
+                child: Icon(
+                  Icons.copyright,
+                  size: 15,
+                  color: Colors.grey.withOpacity(0.6),
+                )),
+            TextSpan(
+                text: 'All Right Reserved | Rencang Gunung Outdoor 2022',
+                style: TextStyle(color: Colors.grey.withOpacity(0.6))),
+          ]),
+          textAlign: TextAlign.center,
         ),
       ),
-      // floatingActionButton: InkWell(
-      //   onTap: () async {
-      //     setState(() {
-      //       playmusic = false;
-      //     });
-      //     playmusic == true
-      //         ? audioplayer.open(Audio.liveStream(
-      //             'https://rencanggunung.com/mp3/adele_someonelikeyou.mp3'))
-      //         : audioplayer.stop();
-      //   },
-      //   child: playmusic == true
-      //       ? const Icon(Icons.stop)
-      //       : const Icon(Icons.play_arrow),
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.miniEndTop,
     );
   }
 
