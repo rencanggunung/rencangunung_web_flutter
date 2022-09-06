@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:rencanggunung_web_flutter/views/home_view.dart';
+import 'package:rencanggunung_web_flutter/views/landing_page_view.dart';
 
 class SplashView extends StatefulWidget {
   final String? title;
@@ -19,7 +19,7 @@ class _SplashViewState extends State<SplashView> {
       Navigator.push(
           context,
           PageTransition(
-            child: const MenuView(),
+            child: LandingPageView(),
             type: PageTransitionType.fade,
           ));
     });
