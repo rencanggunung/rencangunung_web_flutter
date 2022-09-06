@@ -41,9 +41,27 @@
   <script src="flutter.js" defer></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9664445573032616"
     crossorigin="anonymous"></script>
+  <style>
+    .container{ 
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .indicator{ 
+      width: 50vw;
+    }
+
+  </style>
 </head>
 
-<body>
+<body style="overflow: hidden" >
+
+  <div id="loading_indicator" class="container">
+    <img class="indicator" src="./asset/loading.gif">
+  </div>
+
   <script>
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
@@ -58,6 +76,14 @@
       });
     });
   </script>
+
+  window.onload = function (){
+    setTimeout(function () {
+      var loadingIndicator = document.getElementById("loading_indicator");
+      if(loadingIndicator)
+        loadingIndicator.remove();
+    }), 10000;
+  };
 </body>
 
 </html>

@@ -19,7 +19,7 @@ class _SplashViewState extends State<SplashView> {
       Navigator.push(
           context,
           PageTransition(
-            child: LandingPageView(),
+            child: const LandingPageView(),
             type: PageTransitionType.fade,
           ));
     });

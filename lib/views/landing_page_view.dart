@@ -15,17 +15,14 @@ class _LandingPageViewState extends State<LandingPageView> {
     return Scaffold(
         body: Stack(
       children: [
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
+        Align(
+          alignment: Alignment.topRight,
           child: SvgPicture.asset(
             'assets/images/bg_landing.svg',
             color: greenOne.withOpacity(0.3),
           ),
         ),
         Positioned(
-          top: 0,
           left: 0,
           right: 0,
           child: Padding(
