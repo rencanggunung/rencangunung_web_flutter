@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -52,23 +50,42 @@ class _LandingPageViewState extends State<LandingPageView> {
                   height: double.infinity,
                 ),
               ),
-            Positioned(
-              top: MediaQuery.of(context).size.height / 35,
-              left: 0,
-              right: 0,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10, top: 20),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/images/rg_logo.png',
-                      height: 100,
-                      width: 100,
-                    )
-                  ],
+            if (isMobie(context))
+              Positioned(
+                top: MediaQuery.of(context).size.height / 35,
+                left: 0,
+                right: 0,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 20),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/images/rg_logo.png',
+                        height: 100,
+                        width: 100,
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
+            if (!isMobie(context))
+              Positioned(
+                top: MediaQuery.of(context).size.height / 35,
+                left: 0,
+                right: 0,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 20),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        'assets/images/rg_logo.png',
+                        height: 150,
+                        width: 150,
+                      )
+                    ],
+                  ),
+                ),
+              ),
             if (!isMobie(context))
               Positioned(
                 top: 30,
@@ -190,7 +207,7 @@ class _LandingPageViewState extends State<LandingPageView> {
               Positioned(
                 top: MediaQuery.of(context).size.height / 4,
                 child: Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    padding: const EdgeInsets.only(left: 20, right: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -262,7 +279,8 @@ class _LandingPageViewState extends State<LandingPageView> {
                           color: Colors.grey,
                         )),
                     TextSpan(
-                        text: 'All Right Reserved | Alugoro Farm 2022',
+                        text:
+                            'All Right Reserved | Rencang Gunung Outdoor 2022',
                         style: TextStyle(color: Colors.grey)),
                   ]),
                   textAlign: TextAlign.center,
