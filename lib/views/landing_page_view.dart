@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:rencanggunung_web_flutter/common/responsiver.dart';
 import 'package:rencanggunung_web_flutter/common/url.dart';
 import 'package:rencanggunung_web_flutter/common/warna.dart';
@@ -93,7 +94,9 @@ class _LandingPageViewState extends State<LandingPageView> {
                 child: Row(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed('/home');
+                      },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
@@ -115,7 +118,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                     InkWell(
                       onTap: () {
                         launchUrlString(
-                            'https://docs.google.com/document/d/1s6UcsGmCW8kTY8xGPTWiMyyeVPlrfxbSfmZIK58Xd5o/edit');
+                            'https://docs.google.com/document/d/1s6UcsGmCW8kTY8xGPTWiMyyeVPlrfxbSfmZIK58Xd5o');
                       },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 15),
@@ -271,6 +274,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                     bottom: MediaQuery.of(context).size.height / 50),
                 child: RichText(
                   text: const TextSpan(children: [
+                    // WidgetSpan(child: CustomPaint())
                     WidgetSpan(
                         alignment: PlaceholderAlignment.top,
                         child: Icon(
