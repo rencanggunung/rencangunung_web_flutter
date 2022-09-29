@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rencanggunung_web_flutter/common/url.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 Widget endDrawer(BuildContext context) {
@@ -19,7 +20,7 @@ Widget endDrawer(BuildContext context) {
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 'Home',
-                style: TextStyle(fontWeight: FontWeight.w700),
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
               ),
             ),
           ),
@@ -27,12 +28,30 @@ Widget endDrawer(BuildContext context) {
             height: MediaQuery.of(context).size.height / 70,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Get.snackbar('Perhatian', 'Coming Soon!!!',
+                  colorText: Colors.white);
+            },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 'Katalog',
-                style: TextStyle(fontWeight: FontWeight.w700),
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 70,
+          ),
+          InkWell(
+            onTap: () {
+              launchUrlString(pricelist, mode: LaunchMode.externalApplication);
+            },
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Text(
+                'Pricelist',
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
               ),
             ),
           ),
@@ -49,7 +68,7 @@ Widget endDrawer(BuildContext context) {
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 'Syarat & Ketentuan',
-                style: TextStyle(fontWeight: FontWeight.w700),
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
               ),
             ),
           ),
@@ -62,7 +81,7 @@ Widget endDrawer(BuildContext context) {
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 'About',
-                style: TextStyle(fontWeight: FontWeight.w700),
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
               ),
             ),
           ),
