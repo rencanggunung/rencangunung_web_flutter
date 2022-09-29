@@ -29,8 +29,8 @@ Widget endDrawer(BuildContext context) {
           ),
           InkWell(
             onTap: () {
-              Get.snackbar('Perhatian', 'Coming Soon!!!',
-                  colorText: Colors.white);
+              Get.back();
+              Get.snackbar('Perhatian', 'Coming Soon!!!');
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
@@ -60,8 +60,7 @@ Widget endDrawer(BuildContext context) {
           ),
           InkWell(
             onTap: () {
-              launchUrlString(
-                  'https://docs.google.com/document/d/1s6UcsGmCW8kTY8xGPTWiMyyeVPlrfxbSfmZIK58Xd5o');
+              launchUrlString(sk);
               Get.back();
             },
             child: const Padding(
@@ -76,7 +75,11 @@ Widget endDrawer(BuildContext context) {
             height: MediaQuery.of(context).size.height / 70,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Get.back();
+              Get.snackbar('About', 'Developer by CahyonoDev');
+
+            },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(

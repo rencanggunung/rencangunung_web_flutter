@@ -21,7 +21,7 @@ class _LandingPageViewState extends State<LandingPageView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _openEndDrawer() {
-    _scaffoldKey.currentState!.openEndDrawer();
+    _scaffoldKey.currentState!.openDrawer();
   }
 
   @override
@@ -29,7 +29,7 @@ class _LandingPageViewState extends State<LandingPageView> {
     return Scaffold(
         extendBody: true,
         key: _scaffoldKey,
-        endDrawer: endDrawer(context),
+        drawer: endDrawer(context),
         body: SafeArea(
           child: Stack(
             children: [
@@ -133,8 +133,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                       ),
                       InkWell(
                         onTap: () {
-                          launchUrlString(
-                              'https://docs.google.com/document/d/1s6UcsGmCW8kTY8xGPTWiMyyeVPlrfxbSfmZIK58Xd5o');
+                          launchUrlString(sk);
                         },
                         child: const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 15),
@@ -145,7 +144,10 @@ class _LandingPageViewState extends State<LandingPageView> {
                         ),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Get.back();
+                          Get.snackbar('About', 'Developer by CahyonoDev');
+                        },
                         child: const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 15),
                           child: Text(
