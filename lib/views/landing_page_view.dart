@@ -145,7 +145,6 @@ class _LandingPageViewState extends State<LandingPageView> {
                       ),
                       InkWell(
                         onTap: () {
-                          Get.back();
                           Get.snackbar('About', 'Developer by CahyonoDev');
                         },
                         child: const Padding(
@@ -343,7 +342,9 @@ class _LandingPageViewState extends State<LandingPageView> {
             ],
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+        floatingActionButtonLocation: (isMobie(context))
+            ? FloatingActionButtonLocation.miniEndFloat
+            : FloatingActionButtonLocation.endFloat,
         floatingActionButton: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -355,20 +356,35 @@ class _LandingPageViewState extends State<LandingPageView> {
                   onPressed: () {
                     launchUrlString(wa, mode: LaunchMode.externalApplication);
                   },
-                  child: SizedBox(
-                    height: 40,
-                    child: FloatingActionButton(
-                      backgroundColor: greenOne,
-                      onPressed: () {
-                        launchUrlString(ig,
-                            mode: LaunchMode.externalApplication);
-                      },
-                      child: const Icon(
-                        FontAwesome.instagram,
-                        size: 20,
-                      ),
-                    ),
-                  ),
+                  child: isMobie(context)
+                      ? SizedBox(
+                          height: 40,
+                          child: FloatingActionButton(
+                            backgroundColor: greenOne,
+                            onPressed: () {
+                              launchUrlString(ig,
+                                  mode: LaunchMode.externalApplication);
+                            },
+                            child: const Icon(
+                              FontAwesome.instagram,
+                              size: 20,
+                            ),
+                          ),
+                        )
+                      : SizedBox(
+                          height: 50,
+                          child: FloatingActionButton(
+                            backgroundColor: greenOne,
+                            onPressed: () {
+                              launchUrlString(ig,
+                                  mode: LaunchMode.externalApplication);
+                            },
+                            child: const Icon(
+                              FontAwesome.instagram,
+                              size: 20,
+                            ),
+                          ),
+                        ),
                 );
               },
             ),
@@ -383,20 +399,35 @@ class _LandingPageViewState extends State<LandingPageView> {
                     onPressed: () {
                       launchUrlString(wa, mode: LaunchMode.externalApplication);
                     },
-                    child: SizedBox(
-                      height: 40,
-                      child: FloatingActionButton(
-                        backgroundColor: greenOne,
-                        onPressed: () {
-                          launchUrlString(maps,
-                              mode: LaunchMode.externalApplication);
-                        },
-                        child: const Icon(
-                          IonIcons.location,
-                          size: 20,
-                        ),
-                      ),
-                    ));
+                    child: isMobie(context)
+                        ? SizedBox(
+                            height: 40,
+                            child: FloatingActionButton(
+                              backgroundColor: greenOne,
+                              onPressed: () {
+                                launchUrlString(maps,
+                                    mode: LaunchMode.externalApplication);
+                              },
+                              child: const Icon(
+                                IonIcons.location,
+                                size: 20,
+                              ),
+                            ),
+                          )
+                        : SizedBox(
+                            height: 50,
+                            child: FloatingActionButton(
+                              backgroundColor: greenOne,
+                              onPressed: () {
+                                launchUrlString(maps,
+                                    mode: LaunchMode.externalApplication);
+                              },
+                              child: const Icon(
+                                IonIcons.location,
+                                size: 20,
+                              ),
+                            ),
+                          ));
               },
             )
           ],
