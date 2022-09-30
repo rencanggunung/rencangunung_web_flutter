@@ -4,7 +4,7 @@ import 'package:rencanggunung_web_flutter/views/landing_page_view.dart';
 class Routes {
   static final route = [
     GetPage(
-        name: '/home',
+        name: '/',
         transition: Transition.fade,
         transitionDuration: const Duration(milliseconds: 500),
         page: () => const LandingPageView()),

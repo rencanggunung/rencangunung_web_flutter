@@ -30,315 +30,348 @@ class _LandingPageViewState extends State<LandingPageView> {
         extendBody: true,
         key: _scaffoldKey,
         drawer: endDrawer(context),
-        body: SafeArea(
-          child: Stack(
-            children: [
-              if (isMobie(context))
-                Align(
-                  alignment: Alignment.topRight,
-                  child: SvgPicture.asset(
-                    'assets/images/bg_landing.svg',
-                    color: greenOne.withOpacity(0.3),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              if (!isMobie(context))
-                Align(
-                  alignment: Alignment.topRight,
-                  child: SvgPicture.asset(
-                    'assets/images/bg_landing.svg',
-                    color: greenOne.withOpacity(0.3),
-                    fit: BoxFit.cover,
-                    height: double.infinity,
-                  ),
-                ),
-              if (isMobie(context))
-                Positioned(
-                  top: MediaQuery.of(context).size.height / 35,
-                  left: 0,
-                  right: 0,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 20),
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          'assets/images/rg_logo.png',
-                          height: 100,
-                          width: 100,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              if (!isMobie(context))
-                Positioned(
-                  top: MediaQuery.of(context).size.height / 35,
-                  left: 0,
-                  right: 0,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 20),
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          'assets/images/rg_logo.png',
-                          height: 150,
-                          width: 150,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              if (!isMobie(context))
-                Positioned(
-                  top: 30,
-                  right: 30,
-                  child: Row(
+        body: RefreshIndicator(
+          triggerMode: RefreshIndicatorTriggerMode.onEdge,
+          color: greenOne,
+          onRefresh: () async {
+            await Future.delayed(
+              const Duration(seconds: 2),
+              (() {
+                Get.toNamed('/');
+              }),
+            );
+          },
+          child: CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                child: SafeArea(
+                  child: Stack(
                     children: [
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed('/home');
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Text(
-                            'Home',
-                            style: TextStyle(fontWeight: FontWeight.w700),
+                      if (isMobie(context))
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: SvgPicture.asset(
+                            'assets/images/bg_landing.svg',
+                            color: greenOne.withOpacity(0.3),
+                            fit: BoxFit.cover,
                           ),
                         ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Get.snackbar('Perhatian', 'Coming Soon!!!');
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Text(
-                            'Katalog',
-                            style: TextStyle(fontWeight: FontWeight.w700),
+                      if (!isMobie(context))
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: SvgPicture.asset(
+                            'assets/images/bg_landing.svg',
+                            color: greenOne.withOpacity(0.3),
+                            fit: BoxFit.cover,
+                            height: double.infinity,
                           ),
                         ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          launchUrlString(pricelist,
-                              mode: LaunchMode.externalApplication);
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Text(
-                            'Pricelist',
-                            style: TextStyle(fontWeight: FontWeight.w700),
+                      if (isMobie(context))
+                        Positioned(
+                          top: MediaQuery.of(context).size.height / 35,
+                          left: 0,
+                          right: 0,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20, top: 20),
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  'assets/images/rg_logo.png',
+                                  height: 100,
+                                  width: 100,
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          launchUrlString(sk);
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Text(
-                            'Syarat & Ketentuan',
-                            style: TextStyle(fontWeight: FontWeight.w700),
+                      if (!isMobie(context))
+                        Positioned(
+                          top: MediaQuery.of(context).size.height / 35,
+                          left: 0,
+                          right: 0,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20, top: 20),
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  'assets/images/rg_logo.png',
+                                  height: 150,
+                                  width: 150,
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Get.snackbar('About', 'Developer by CahyonoDev');
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Text(
-                            'About',
-                            style: TextStyle(fontWeight: FontWeight.w700),
+                      if (!isMobie(context))
+                        Positioned(
+                          top: 30,
+                          right: 30,
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Get.toNamed('/');
+                                },
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 15),
+                                  child: Text(
+                                    'Home',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Get.snackbar('Perhatian', 'Coming Soon!!!');
+                                },
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 15),
+                                  child: Text(
+                                    'Katalog',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  launchUrlString(pricelist,
+                                      mode: LaunchMode.externalApplication);
+                                },
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 15),
+                                  child: Text(
+                                    'Pricelist',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  launchUrlString(sk);
+                                },
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 15),
+                                  child: Text(
+                                    'Syarat & Ketentuan',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Get.snackbar(
+                                      'About', 'Developer by CahyonoDev');
+                                },
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 15),
+                                  child: Text(
+                                    'About',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ),
+                      if (isMobie(context))
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: IconButton(
+                              onPressed: _openEndDrawer,
+                              icon: const Icon(Icons.menu)),
+                        ),
+                      if (isMobie(context))
+                        Positioned(
+                          top: MediaQuery.of(context).size.height / 4,
+                          child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10, right: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  const AutoSizeText(
+                                    'Start Adventure\nWith Us',
+                                    maxLines: 2,
+                                    minFontSize: 40,
+                                    maxFontSize: 50,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: blueOne),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  const AutoSizeText(
+                                    'Sewa alat camping dan outdoor murah sejagat raya!',
+                                    maxLines: 2,
+                                    maxFontSize: 14,
+                                    minFontSize: 12,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.black),
+                                  ),
+                                  const SizedBox(
+                                    height: 50,
+                                  ),
+                                  Container(
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        gradient: const LinearGradient(
+                                            colors: [greenOne, blueTwo],
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight)),
+                                    child: Link(
+                                        target: LinkTarget.self,
+                                        uri: Uri.parse(wa),
+                                        builder: (context, function) {
+                                          return TextButton(
+                                              onPressed: () {
+                                                launchUrlString(wa,
+                                                    mode: LaunchMode
+                                                        .externalApplication);
+                                              },
+                                              child: const Center(
+                                                child: Text(
+                                                  'Booking Sekarang',
+                                                  style: TextStyle(
+                                                      color: Colors.white),
+                                                ),
+                                              ));
+                                        }),
+                                  )
+                                ],
+                              )),
+                        ),
+                      if (!isMobie(context))
+                        Positioned(
+                          top: MediaQuery.of(context).size.height / 4,
+                          child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  const AutoSizeText(
+                                    'Start Adventure\nWith Us',
+                                    maxLines: 2,
+                                    minFontSize: 100,
+                                    maxFontSize: 150,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: blueOne),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  const AutoSizeText(
+                                    'Sewa alat camping dan outdoor murah sejagat raya!',
+                                    maxLines: 2,
+                                    maxFontSize: 50,
+                                    minFontSize: 30,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.black),
+                                  ),
+                                  const SizedBox(
+                                    height: 50,
+                                  ),
+                                  Container(
+                                    height: 100,
+                                    width: 250,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        gradient: const LinearGradient(
+                                            colors: [greenOne, blueTwo],
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight)),
+                                    child: Link(
+                                        target: LinkTarget.self,
+                                        uri: Uri.parse(wa),
+                                        builder: (context, function) {
+                                          return TextButton(
+                                              onPressed: () {
+                                                launchUrlString(wa,
+                                                    mode: LaunchMode
+                                                        .externalApplication);
+                                              },
+                                              child: const Center(
+                                                child: Text(
+                                                  'Booking Sekarang',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 20),
+                                                ),
+                                              ));
+                                        }),
+                                  )
+                                ],
+                              )),
+                        ),
+                      if (isMobie(context))
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).size.height / 50),
+                            child: RichText(
+                              text: const TextSpan(children: [
+                                // WidgetSpan(child: CustomPaint())
+                                WidgetSpan(
+                                    alignment: PlaceholderAlignment.top,
+                                    child: Icon(
+                                      Icons.copyright,
+                                      size: 12,
+                                      color: Colors.grey,
+                                    )),
+                                TextSpan(
+                                    text:
+                                        'All Right Reserved | Rencang Gunung Outdoor 2022',
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 12)),
+                              ]),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      if (!isMobie(context))
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).size.height / 50),
+                            child: RichText(
+                              text: const TextSpan(children: [
+                                // WidgetSpan(child: CustomPaint())
+                                WidgetSpan(
+                                    alignment: PlaceholderAlignment.top,
+                                    child: Icon(
+                                      Icons.copyright,
+                                      size: 15,
+                                      color: Colors.grey,
+                                    )),
+                                TextSpan(
+                                    text:
+                                        'All Right Reserved | Rencang Gunung Outdoor 2022',
+                                    style: TextStyle(color: Colors.grey)),
+                              ]),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        )
                     ],
                   ),
                 ),
-              if (isMobie(context))
-                Align(
-                  alignment: Alignment.topRight,
-                  child: IconButton(
-                      onPressed: _openEndDrawer, icon: const Icon(Icons.menu)),
-                ),
-              if (isMobie(context))
-                Positioned(
-                  top: MediaQuery.of(context).size.height / 4,
-                  child: Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const AutoSizeText(
-                            'Start Adventure\nWith Us',
-                            maxLines: 2,
-                            minFontSize: 40,
-                            maxFontSize: 50,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700, color: blueOne),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const AutoSizeText(
-                            'Sewa alat camping dan outdoor murah sejagat raya!',
-                            maxLines: 2,
-                            maxFontSize: 14,
-                            minFontSize: 12,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: Colors.black),
-                          ),
-                          const SizedBox(
-                            height: 50,
-                          ),
-                          Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                gradient: const LinearGradient(
-                                    colors: [greenOne, blueTwo],
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight)),
-                            child: Link(
-                                target: LinkTarget.self,
-                                uri: Uri.parse(wa),
-                                builder: (context, function) {
-                                  return TextButton(
-                                      onPressed: () {
-                                        launchUrlString(wa,
-                                            mode:
-                                                LaunchMode.externalApplication);
-                                      },
-                                      child: const Center(
-                                        child: Text(
-                                          'Booking Sekarang',
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ));
-                                }),
-                          )
-                        ],
-                      )),
-                ),
-              if (!isMobie(context))
-                Positioned(
-                  top: MediaQuery.of(context).size.height / 4,
-                  child: Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const AutoSizeText(
-                            'Start Adventure\nWith Us',
-                            maxLines: 2,
-                            minFontSize: 100,
-                            maxFontSize: 150,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700, color: blueOne),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const AutoSizeText(
-                            'Sewa alat camping dan outdoor murah sejagat raya!',
-                            maxLines: 2,
-                            maxFontSize: 50,
-                            minFontSize: 30,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: Colors.black),
-                          ),
-                          const SizedBox(
-                            height: 50,
-                          ),
-                          Container(
-                            height: 100,
-                            width: 250,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                gradient: const LinearGradient(
-                                    colors: [greenOne, blueTwo],
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight)),
-                            child: Link(
-                                target: LinkTarget.self,
-                                uri: Uri.parse(wa),
-                                builder: (context, function) {
-                                  return TextButton(
-                                      onPressed: () {
-                                        launchUrlString(wa,
-                                            mode:
-                                                LaunchMode.externalApplication);
-                                      },
-                                      child: const Center(
-                                        child: Text(
-                                          'Booking Sekarang',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20),
-                                        ),
-                                      ));
-                                }),
-                          )
-                        ],
-                      )),
-                ),
-              if (isMobie(context))
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).size.height / 50),
-                    child: RichText(
-                      text: const TextSpan(children: [
-                        // WidgetSpan(child: CustomPaint())
-                        WidgetSpan(
-                            alignment: PlaceholderAlignment.top,
-                            child: Icon(
-                              Icons.copyright,
-                              size: 12,
-                              color: Colors.grey,
-                            )),
-                        TextSpan(
-                            text:
-                                'All Right Reserved | Rencang Gunung Outdoor 2022',
-                            style: TextStyle(color: Colors.grey, fontSize: 12)),
-                      ]),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              if (!isMobie(context))
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).size.height / 50),
-                    child: RichText(
-                      text: const TextSpan(children: [
-                        // WidgetSpan(child: CustomPaint())
-                        WidgetSpan(
-                            alignment: PlaceholderAlignment.top,
-                            child: Icon(
-                              Icons.copyright,
-                              size: 15,
-                              color: Colors.grey,
-                            )),
-                        TextSpan(
-                            text:
-                                'All Right Reserved | Rencang Gunung Outdoor 2022',
-                            style: TextStyle(color: Colors.grey)),
-                      ]),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                )
+              )
             ],
           ),
         ),

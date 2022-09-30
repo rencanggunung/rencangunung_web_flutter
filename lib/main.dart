@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rencanggunung_web_flutter/routes/route.dart';
-import 'package:rencanggunung_web_flutter/views/landing_page_view.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() {
@@ -13,9 +12,8 @@ void main() {
       fontFamily: 'Montserrat',
     ),
     debugShowCheckedModeBanner: false,
-    home: const LandingPageView(),
-    initialRoute: '/home',
     getPages: Routes.route,
+    initialRoute: '/',
   ));
 }
 

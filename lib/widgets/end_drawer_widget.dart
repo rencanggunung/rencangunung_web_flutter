@@ -14,7 +14,7 @@ Widget endDrawer(BuildContext context) {
           InkWell(
             onTap: () {
               Get.back();
-              Get.toNamed('/home');
+              Get.toNamed('/');
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
@@ -78,7 +78,6 @@ Widget endDrawer(BuildContext context) {
             onTap: () {
               Get.back();
               Get.snackbar('About', 'Developer by CahyonoDev');
-
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
