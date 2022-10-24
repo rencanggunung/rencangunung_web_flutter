@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rencanggunung_web_flutter/common/url.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 Widget endDrawer(BuildContext context) {
@@ -13,8 +15,8 @@ Widget endDrawer(BuildContext context) {
         children: [
           InkWell(
             onTap: () {
-              Get.back();
-              Get.toNamed('/');
+              context.pop();
+              context.go('/');
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
@@ -29,8 +31,10 @@ Widget endDrawer(BuildContext context) {
           ),
           InkWell(
             onTap: () {
-              Get.back();
-              Get.snackbar('Perhatian', 'Coming Soon!!!');
+              // context.pop();
+              // showTopSnackBar(context,
+              //     const CustomSnackBar.info(message: 'Coming Soon!!!'));
+              context.go('/katalog');
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
@@ -61,7 +65,7 @@ Widget endDrawer(BuildContext context) {
           InkWell(
             onTap: () {
               launchUrlString(sk);
-              Get.back();
+              context.pop();
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
@@ -76,8 +80,11 @@ Widget endDrawer(BuildContext context) {
           ),
           InkWell(
             onTap: () {
-              Get.back();
-              Get.snackbar('About', 'Developer by CahyonoDev');
+              context.pop();
+              showTopSnackBar(
+                  context,
+                  const CustomSnackBar.info(
+                      message: 'Developer by CahyonoDev'));
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),

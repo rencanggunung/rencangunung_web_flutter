@@ -1,14 +1,16 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:rencanggunung_web_flutter/common/responsiver.dart';
 import 'package:rencanggunung_web_flutter/common/url.dart';
 import 'package:rencanggunung_web_flutter/common/warna.dart';
 import 'package:rencanggunung_web_flutter/widgets/end_drawer_widget.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:go_router/go_router.dart';
 
 class LandingPageView extends StatefulWidget {
   const LandingPageView({Key? key}) : super(key: key);
@@ -37,7 +39,7 @@ class _LandingPageViewState extends State<LandingPageView> {
             await Future.delayed(
               const Duration(seconds: 2),
               (() {
-                Get.toNamed('/');
+                context.go('/');
               }),
             );
           },
@@ -110,7 +112,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  Get.toNamed('/');
+                                  context.go('/');
                                 },
                                 child: const Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 15),
@@ -123,7 +125,7 @@ class _LandingPageViewState extends State<LandingPageView> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  Get.snackbar('Perhatian', 'Coming Soon!!!');
+                                  context.go('/katalog');
                                 },
                                 child: const Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 15),
@@ -163,8 +165,10 @@ class _LandingPageViewState extends State<LandingPageView> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  Get.snackbar(
-                                      'About', 'Developer by CahyonoDev');
+                                  showTopSnackBar(
+                                      context,
+                                      const CustomSnackBar.info(
+                                          message: 'Developer by CahyonoDev'));
                                 },
                                 child: const Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 15),
