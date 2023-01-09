@@ -19,6 +19,7 @@ class LandingPageView extends StatefulWidget {
 
 class _LandingPageViewState extends State<LandingPageView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  var now = DateTime.now();
 
   void _openEndDrawer() {
     _scaffoldKey.currentState!.openDrawer();
@@ -323,9 +324,9 @@ class _LandingPageViewState extends State<LandingPageView> {
                                 bottom:
                                     MediaQuery.of(context).size.height / 50),
                             child: RichText(
-                              text: const TextSpan(children: [
+                              text: TextSpan(children: [
                                 // WidgetSpan(child: CustomPaint())
-                                WidgetSpan(
+                                const WidgetSpan(
                                     alignment: PlaceholderAlignment.top,
                                     child: Icon(
                                       Icons.copyright,
@@ -334,8 +335,8 @@ class _LandingPageViewState extends State<LandingPageView> {
                                     )),
                                 TextSpan(
                                     text:
-                                        'All Right Reserved | Rencang Gunung Outdoor 2022',
-                                    style: TextStyle(
+                                        'All Right Reserved | Rencang Gunung Outdoor ${now.year}',
+                                    style: const TextStyle(
                                         color: Colors.grey, fontSize: 12)),
                               ]),
                               textAlign: TextAlign.center,
@@ -350,9 +351,9 @@ class _LandingPageViewState extends State<LandingPageView> {
                                 bottom:
                                     MediaQuery.of(context).size.height / 50),
                             child: RichText(
-                              text: const TextSpan(children: [
+                              text: TextSpan(children: [
                                 // WidgetSpan(child: CustomPaint())
-                                WidgetSpan(
+                                const WidgetSpan(
                                     alignment: PlaceholderAlignment.top,
                                     child: Icon(
                                       Icons.copyright,
@@ -361,8 +362,8 @@ class _LandingPageViewState extends State<LandingPageView> {
                                     )),
                                 TextSpan(
                                     text:
-                                        'All Right Reserved | Rencang Gunung Outdoor 2022',
-                                    style: TextStyle(color: Colors.grey)),
+                                        'All Right Reserved | Rencang Gunung Outdoor ${now.year}',
+                                    style: const TextStyle(color: Colors.grey)),
                               ]),
                               textAlign: TextAlign.center,
                             ),
